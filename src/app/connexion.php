@@ -8,7 +8,6 @@
                 $db = NULL;
                 
             }
+            return $db;
         }
-        return $db;
-?>
-
+        

@@ -1,6 +1,10 @@
 <?php
 function getPage($db){
  $lesPages['accueil'] = "actionAccueil;0";
+ $lesPages['materiel']="actionMateriel;0";
+ $lesPages['agenda']="actionAgenda;0";
+ $lesPages['rdv']="actionRdv;0";
+ 
  if ($db!=null){
     if(isset($_GET['page'])){
         $page = $_GET['page']; }

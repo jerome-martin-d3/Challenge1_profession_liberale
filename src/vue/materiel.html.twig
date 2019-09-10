@@ -1,0 +1,42 @@
+{% extends "base.html.twig" %}
+{% block titre %} Gestion Matériel {% endblock %}
+{% block contenu %}
+            <div class='col-md-6'>
+<h3>Gestion du matériel</h3>
+        <h3>Ajout d'un nouvel equipement </h3>
+        <form action="" method="POST">
+            <div class="form-group">
+                
+                <label for="libelleMat">Intitulé de l'équipement</label>
+                <input type="text" id="libelleMat" name="libelleMat" />
+                
+            </div>
+            
+            <div class="form-group">
+                
+                <label for="Description">Description / utilité</label>
+                <textarea class="form-control" rows="5" id="Description" name="Description"></textarea>
+                
+            </div>
+            
+            <input type="submit" value="Ajouter"/>
+        </form>
+        <h3>Mon matériel</h3>
+        <table class="table">
+            <thead class="thead-dark">
+                <th>Intitulé </th>
+                <th>Description / utilité</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Stethoscope</td>
+                    <td>......</td>
+                </tr>
+                <tr>
+                    <td>Tensiomètre</td>
+                    <td>........</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
