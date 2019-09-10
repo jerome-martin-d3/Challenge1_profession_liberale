@@ -9,6 +9,9 @@ function actionMateriel($twig, $db){
         $materiel->delete($_GET['idMatSup']);
     }
     
+    $json = json_encode($materiel->select());
+    echo $json;
+    
     $listeMateriel = $materiel->select();
     echo $twig->render('materiel.html.twig', array("listeMateriel"=> $listeMateriel));
 }

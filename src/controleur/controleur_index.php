@@ -1,6 +1,16 @@
 <?php
-function actionAccueil($twig){
- echo $twig->render('index.html.twig', array());
+function actionAccueil($twig, $db){
+    $client = new Client($db);
+    if(isset($_POST['ajoutCli'])){
+        $nomCli = $_POST['nomCli'];                 $prenomCli = $_POST['prenomCli'];
+        $dateNaissCli = $_POST['dateNaissCli'];     $adressCli = $_POST['adressCli'];
+        $numCli = $_POST['numCli'];
+        
+        $client->insert($nomCli, $prenomCli, $dateNaissCli, $adressCli, $numCli);
+    }
+    $listeClients = $client->select();
+
+ echo $twig->render('index.html.twig', array("listeClients"=>$listeClients));
 } 
 function actionAgenda($twig){
     echo $twig->render('prestation_prevue.html.twig', array());
