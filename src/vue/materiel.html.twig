@@ -26,12 +26,14 @@
             <thead class="thead-dark">
                 <th>Intitulé </th>
                 <th>Description / utilité</th>
+                <th><i class='fas fa-trash'></i>
             </thead>
             <tbody>
                 {% for materiel in listeMateriel %}
                 <tr>
                     <td>{{materiel.nomMat}}</td>
                     <td>{{materiel.comMat}}</td>
+                    <td><a href='index.php?page=materiel&idMatSup={{materiel.idMat}}'><i class='fas fa-trash'></i></a>
                 </tr>
                 {% endfor %}
             </tbody>
