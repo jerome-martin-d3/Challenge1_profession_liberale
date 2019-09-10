@@ -2,9 +2,6 @@
 function actionAccueil($twig){
  echo $twig->render('index.html.twig', array());
 } 
-function actionMateriel($twig){
-    echo $twig->render('materiel.html.twig', array());
-}
 function actionAgenda($twig){
     echo $twig->render('prestation_prevue.html.twig', array());
 }

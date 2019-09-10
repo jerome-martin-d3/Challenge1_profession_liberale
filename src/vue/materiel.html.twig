@@ -4,21 +4,21 @@
             <div class='col-md-6'>
 <h3>Gestion du matériel</h3>
         <h3>Ajout d'un nouvel equipement </h3>
-        <form action="" method="POST">
+        <form action="index.php?page=materiel" method="POST">
             <div class="form-group">
                 
-                <label for="libelleMat">Intitulé de l'équipement</label>
-                <input type="text" id="libelleMat" name="libelleMat" />
+                <label for="nomMat">Intitulé de l'équipement</label>
+                <input type="text" id="nomMat" name="nomMat" />
                 
             </div>
             
             <div class="form-group">
                 
-                <label for="Description">Description / utilité</label>
-                <textarea class="form-control" rows="5" id="Description" name="Description"></textarea>
+                <label for="comMat">Description / utilité</label>
+                <textarea class="form-control" rows="5" id="comMat" name="comMat"></textarea>
                 
             </div>
-            
+            <input type='hidden' name='ajoutMat' />
             <input type="submit" value="Ajouter"/>
         </form>
         <h3>Mon matériel</h3>
@@ -28,14 +28,12 @@
                 <th>Description / utilité</th>
             </thead>
             <tbody>
+                {% for materiel in listeMateriel %}
                 <tr>
-                    <td>Stethoscope</td>
-                    <td>......</td>
+                    <td>{{materiel.nomMat}}</td>
+                    <td>{{materiel.comMat}}</td>
                 </tr>
-                <tr>
-                    <td>Tensiomètre</td>
-                    <td>........</td>
-                </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>
