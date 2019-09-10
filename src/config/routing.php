@@ -3,6 +3,7 @@ function getPage($db){
  $lesPages['accueil'] = "actionAccueil;0";
  $lesPages['materiel']="actionMateriel;0";
  $lesPages['agenda']="actionAgenda;0";
+ $lesPages['exportAgenda']="actionExportAgenda;0";
  $lesPages['rdv']="actionRdv;0";
  
  if ($db!=null){
