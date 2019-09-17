@@ -10,7 +10,6 @@ function actionMateriel($twig, $db){
     }
     
     $json = json_encode($materiel->select());
-    echo $json;
     
     $listeMateriel = $materiel->select();
     echo $twig->render('materiel.html.twig', array("listeMateriel"=> $listeMateriel));

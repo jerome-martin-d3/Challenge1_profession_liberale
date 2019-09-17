@@ -43,8 +43,8 @@ Class Client{
         }
         return $this->selectById->fetch();
     }
-    public function update($nomCli, $prenomCli, $dateNaissCli, $adressCli, $numCli){
-        $this->update->execute(array(":nomCli"=>$nomCli, ":prenomCli"=>$prenomCli, ":dateNaissCli"=>$dateNaissCli, ":adressCli"=>$adressCli, ":numCli"=>$numCli));
+    public function update($idCli, $nomCli, $prenomCli, $dateNaissCli, $adressCli, $numCli){
+        $this->update->execute(array(":id"=>$idCli, ":nomCli"=>$nomCli, ":prenomCli"=>$prenomCli, ":dateNaissCli"=>$dateNaissCli, ":adressCli"=>$adressCli, ":numCli"=>$numCli));
         if($this->update->errorCode()!=0){
             print_r($this->update->errorInfo());
         }
