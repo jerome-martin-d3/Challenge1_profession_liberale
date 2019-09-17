@@ -1,5 +1,5 @@
 <?php
-Class Materiel{
+Class Activite{
     private $db;
     private $select;
     private $insert;
@@ -7,9 +7,9 @@ Class Materiel{
     
     public function __construct($db){
         $this->db = $db;
-        $this->select = $db->prepare("select * FROM materiel");
-        $this->insert = $db->prepare("insert into materiel (nomMat, comMat) VALUES(:nom, :desc) ");
-        $this->delete = $db->prepare("DELETE FROM materiel WHERE idMat = :id");
+        $this->select = $db->prepare("select * FROM activite");
+        $this->insert = $db->prepare("insert into activite (nomAct, descAct) VALUES(:nomAct, :descAct) ");
+        $this->delete = $db->prepare("DELETE FROM activite WHERE idAct = :id");
     }
     
     public function select(){
@@ -19,16 +19,17 @@ Class Materiel{
         }
         return $this->select->fetchAll();
     }
-    public function insert($nomMat, $comMat){
-        $this->insert->execute(array(":nom"=>$nomMat, ":desc"=>$comMat));
+    public function insert($nomAct, $descAct){
+        $this->insert->execute(array(":nomAct"=>$nomAct, ":descAct"=>$descAct));
         if($this->insert->errorCode()!=0){
             print_r($this->insert->errorinfo());
         }
     }
-    public function delete($idAct){
-        $this->delete->execute(array(":idAct"=>$idAct));
+    public function delete($id){
+        $this->delete->execute(array(":id"=>$id));
         if($this->delete->errorCode()!=0){
             print_r($this->delete->errorinfo());
         }
     }
 }
+
