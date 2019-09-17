@@ -1,57 +1,62 @@
 {% extends "base.html.twig" %}
 {% block titre %}Gestion Clientèle{% endblock %}
 {% block contenu %}
-<div class="col-md-6">
+<div class="col-md-8">
           
-        <form action="prise_rdv.html" method="POST" >
+        <form action="index.php" method="POST" enctype="multipart/form-data">
 
             <div class="form-group">
                 <label for="nomCli">Nom </label>
-                <input type="text" class="form-control" id="nomCli" name="nomCli"/>
+                <input type="text" class="form-control" id="nomCli" value="{{listeClients.leClient["nomCli"]}}" name="nomCli"/>
             </div>
             <div class="form-group">
                 <label for="prenomCli">Prénom </label>
-                <input type="text" class="form-control" id="prenomCli" name="prenomCli" />
+                <input type="text" class="form-control" id="prenomCli" value="{{listeClients.leClient["prenomCli"]}}" name="prenomCli" />
             </div>
             <div class="form-group">
                 <label for="dateNaissCli">Date de naissance</label>
-                <input type="date"class="form-control" id="dateNaissCli" name="dateNaissCli" />
+                <input type="date"class="form-control" id="dateNaissCli" value="{{listeClients.leClient["dateNaissCli"]}}" name="dateNaissCli" />
             </div>
             <div class="form-group">
-                <label for="adresseCli">Adresse complète</label>
-                <input type="text" class="form-control" id="adresseCli" name="adresseCli" />
+                <label for="adressCli">Adresse complète</label>
+                <input type="text" class="form-control" id="adressCli" value="{{listeClients.leClient["adressCli"]}}" name="adressCli" />
             </div>
             <div class="form-group">
                 <label for="numCli">Numéro de téléphone</label>
-                <input type="tel" class="form-control"id="numCli" name="numCli" />
+                <input type="tel" class="form-control"id="numCli" value="{{listeClients.leClient["numCli"]}}" name="numCli" />
             </div>
-            <input type="submit" class="form-control" value="Ajouter un client"/>
+            {% if get.modifCli is defined %}
+                <input type="hidden" name="modifCli" value="{{get.modifCli}}" />
+                <input type="submit" class="form-control" value="Modifier le client"/>
+            {% else %}
+                <input type="hidden" name="ajoutCli" />
+                <input type="submit" class="form-control" value="Ajouter un client"/>
+            {% endif %}
+            
         </form>
 
         <h3>Mes clients</h3>
         <table class="table">
             <thead class="thead-dark">
                 <th>Nom et Prénom</th>
-                <th>Âge</th>
+                <th>Date de naissance</th>
                 <th>Adresse</th>
                 <th>Numéro de téléphone</th>
-                <th><i class="fas fa-pen"></i></th>
+                <th><i class="fa fa-plus" aria-hidden="true"></i> | <i class="fas fa-pen"></i> | <i class="fas fa-trash"></i>  |  <i class="fa fa-download" aria-hidden="true"></i></th>
             </thead>
             <tbody>
+                {% for cli in listeClients.lesClients %}
             <tr class="table-primary">
-                <td>(Consultation prévue dans la journée)Nom Prénom</td>
-                <td>48ans</td>
-                <td>4 rue </td>
-                <td>03.33.33.33.33</td>
-                <td><a href="prise_rdv.html" title="Prévoir une prestation"><i class="fas fa-pen"></i></a></td>
+                <td>{{cli.nomCli}}  {{cli.prenomCli}}</td>
+                <td>{{cli.dateNaissCli}}</td>
+                <td>{{cli.adressCli}}</td>
+                <td>{{cli.numCli}}</td>
+                <td><a href="index.php?page=rdv&idCli={{cli.idCli}}" title="Prévoir une prestation"><i class="fa fa-plus" aria-hidden="true"></i></a> | 
+                    <a href="index.php?modifCli={{cli.idCli}}" title="Modifier les informations de ce client"><i class="fa fa-pen"></i></a> | 
+                    <a href="index.php?supCli={{cli.idCli}}" title="Supprimer ce client"><i class="fas fa-trash"></i></a>  |  
+                    <a href="index.php?extcli={{cli.idCli}}" target="_blank" title="Télécharger le dossier client"><i class="fa fa-download" aria-hidden="true"></i></a></td>
             </tr>
-            <tr>
-                <td>Nom Prénom</td>
-                <td>48ans</td>
-                <td>4 rue </td>
-                <td>03.33.33.33.33</td>
-                <td><a href="prise_rdv.html" title="Prévoir une prestation"><i class="fas fa-pen"></i></a></td>
-            </tr>
+            {% endfor %}
             </tbody>
         </table>
     </div>
