@@ -1,0 +1,22 @@
+a)SELECT * from prestation,consultation where month(datePres)=09 and consultation.idConsul=prestation.idConsul
+
+SELECT SUM(montantPay) from prestation,consultation where month(datePres)=09 and consultation.idConsul=prestation.idConsul
+
+b)SELECT * from prestation,consultation where year(datePres)=2019 and consultation.idConsul=prestation.idConsul
+
+SELECT SUM(montantPay) from prestation,consultation where year(datePres)=2019 and consultation.idConsul=prestation.idConsul
+
+c)SELECT avg(montantPay)from prestation,consultation where year(datePres)=2019 and consultation.idConsul=prestation.idConsul
+
+D)SELECT sum(montantPay) as CA, MONTH(datePres) as mois, YEAR(datePres) as annee FROM prestation P INNER JOIN consultation C ON P.idPres = C.idConsul GROUP BY MONTH(datePres) ORDER BY CA desc LIMIT 1 
+
+E)SELECT sum(montantPay) as CA, MONTH(datePres) as mois, YEAR(datePres) as annee FROM prestation P INNER JOIN consultation C ON P.idPres = C.idConsul GROUP BY MONTH(datePres) ORDER BY CA asc LIMIT 1
+
+f)SELECT * from client,consultation where month(datePres)=09 and consultation.idConsul=client.idConsul 
+SELECT * from client,consultation where year(datePres)=09 and consultation.idConsul=client.idConsul 
+SELECT * from client,consultation where week(datePres)=09 and consultation.idConsul=client.idConsul 
+
+g)SELECT count(idConsul), idClient from consultation group by idClient
+
+h)SELECT AVG(idConsul), idClient from consultation group by idClient
+
