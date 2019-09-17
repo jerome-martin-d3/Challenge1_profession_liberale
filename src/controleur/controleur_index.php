@@ -5,8 +5,13 @@ function actionAccueil($twig, $db){
         $nomCli = $_POST['nomCli'];                 $prenomCli = $_POST['prenomCli'];
         $dateNaissCli = $_POST['dateNaissCli'];     $adressCli = $_POST['adressCli'];
         $numCli = $_POST['numCli'];
-        
         $client->insert($nomCli, $prenomCli, $dateNaissCli, $adressCli, $numCli);
+    }
+    if(isset($_GET['modifCli'])){
+        $listeClient["leClient"] = $client->selectById($_GET['modifCli']);
+    }
+    if(isset($_GET['supCli'])){
+        $client->delete($_GET['supCli']);
     }
     $listeClients = $client->select();
 

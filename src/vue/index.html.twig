@@ -1,13 +1,13 @@
 {% extends "base.html.twig" %}
 {% block titre %}Gestion Clientèle{% endblock %}
 {% block contenu %}
-<div class="col-md-6">
+<div class="col-md-8">
           
-        <form action="index.php" method="POST" >
+        <form action="index.php" method="POST" enctype="multipart/form-data">
 
             <div class="form-group">
                 <label for="nomCli">Nom </label>
-                <input type="text" class="form-control" id="nomCli" name="nomCli"/>
+                <input type="text" class="form-control" id="nomCli" value="{{ listeClient.leClient[""]}}" name="nomCli"/>
             </div>
             <div class="form-group">
                 <label for="prenomCli">Prénom </label>
@@ -25,6 +25,7 @@
                 <label for="numCli">Numéro de téléphone</label>
                 <input type="tel" class="form-control"id="numCli" name="numCli" />
             </div>
+            
             <input type="hidden" name="ajoutCli" />
             <input type="submit" class="form-control" value="Ajouter un client"/>
         </form>
@@ -36,7 +37,7 @@
                 <th>Date de naissance</th>
                 <th>Adresse</th>
                 <th>Numéro de téléphone</th>
-                <th><i class="fas fa-pen"></i></th>
+                <th><i class="fa fa-plus" aria-hidden="true"></i> | <i class="fas fa-pen"></i> | <i class="fas fa-trash"></i></th>
             </thead>
             <tbody>
                 {% for cli in listeClients %}
@@ -45,7 +46,9 @@
                 <td>{{cli.dateNaissCli}}</td>
                 <td>{{cli.adressCli}}</td>
                 <td>{{cli.numCli}}</td>
-                <td><a href="index.php?page=rdv&idCli={{cli.idCli}}" title="Prévoir une prestation"><i class="fas fa-pen"></i></a></td>
+                <td><a href="index.php?page=rdv&idCli={{cli.idCli}}" title="Prévoir une prestation"><i class="fa fa-plus" aria-hidden="true"></i></a> | 
+                    <a href="index.php?modifCli={{cli.idCli}}" title="Modifier les informations de ce client"><i class="fa fa-pen"></i></a> | 
+                    <a href="index.php?supCli={{cli.idCli}}" title="Supprimer ce client"><i class="fas fa-trash"></i></a></td>
             </tr>
             {% endfor %}
             </tbody>
