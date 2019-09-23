@@ -7,34 +7,31 @@
     <h3>Rendez-vous du jour</h3>
     <table>
         <tr>
-            <td>Aujourd'hui</td>
-            <td>--h--</td>
-            <td></td>
-    </tr>
-        
-            <tr>
-                <td></td>
-                <td>08h00</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>09h00</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>10h00</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>11h00</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>12h00</td>
-                <td></td>
-            </tr>     
+            <td>Aujourd'hui à</td>
+            <td>Prestation(s) ou activitée(s)</td>
+            <td>Client</td>
+    </tr>        
+           
+            {% for cons in consultations %}
+                {% for i in 8..18 %}
+                    {% if cons.heurePres[:2] == i %}
+                        <tr>
+                            <td>{{cons.heurePres}}</td>
+                            <td>{{cons.libellePres}}</td>
+                            <td>{{cons.nomCli}} {{cons.prenomCli}}</td></tr>
+                    {% else %}
+                        <tr>
+                            <td>{{i}}:00</td>
+                            <td>...</td>
+                            <td></td></tr>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}    
     </table>
+    <hr />
+    <h3>Informations concernant les clients du jour</h3>
+    {% for cons in consultations %}
+        <hr />
+        <p><u>{{cons.nomCli}}  {{cons.prenomCli}}</u>, né le {{cons.dateNaissCli}}, habite à {{ cons.adressCli }}. Est joignable par téléphone au {{ cons.numCli }}. <br /> Préstation prévue : {{cons.libellePres}}<br /> <b>Devra régler {{cons.montantPay}} € par {{cons.libellePay}}</b></p>
+        <hr />
+    {% endfor %}

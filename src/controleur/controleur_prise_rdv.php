@@ -1,4 +1,15 @@
 <?php
+function actionRdv($twig, $db){
+    $client = new Client($db);
+    
+    $clients = $client->select();
+    if(isset($_POST['infos_cli'])){
+        $clients['unCli'] = $client->selectById($_POST['choixClient']);
+    }else if(isset($_GET['idCli'])){
+        $clients['unCli'] = $client->selectById($_GET['idCli']);
+    }
+    echo $twig->render('prise_rdv.html.twig', array("clients"=>$clients));
+}
 function actionConsultation($twig, $db){
     $consultation = new Consultation($db);
     
@@ -8,7 +19,6 @@ function actionConsultation($twig, $db){
     if(isset($_GET['idMatSup'])){
         $materiel->delete($_GET['idMatSup']);
     }
-    
     $listeMateriel = $materiel->select();
     echo $twig->render('materiel.html.twig', array("listeMateriel"=> $listeMateriel));
 }
