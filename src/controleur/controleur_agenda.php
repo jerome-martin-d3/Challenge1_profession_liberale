@@ -1,6 +1,10 @@
 <?php
 function actionAgenda($twig, $db){
     $agenda = new Agenda($db);
+    
+    if(isset($_GET['supCons'])){
+        $agenda->delete($_GET['supCons']);
+    }
     $date = date('o-m-j');
     $consultations = $agenda->selectByDate($date);
     echo $twig->render('prestation_prevue.html.twig', array("consultations"=>$consultations));

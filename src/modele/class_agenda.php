@@ -3,6 +3,7 @@ Class Agenda{
     private $db;
     private $select;
     private $selectByDate;
+    private $delete;
     
     public function __construct($db){
         $this->db = $db;
@@ -15,8 +16,7 @@ Class Agenda{
                                                 INNER JOIN prestation pres on pres.idPres = cons.idPres
                                                 INNER JOIN paiement paie on cons.idPay = paie.idPay
                                                 WHERE cons.datePres = :date");
-        
-        
+        $this->delete = $db->prepare("DELETE FROM consultation WHERE idConsul = :id");        
     }
     
     public function select(){
@@ -32,5 +32,12 @@ Class Agenda{
             print_r($this->selectByDate->errorInfo());
         }
         return $this->selectByDate->fetchAll();
+    }
+    public function delete($id){
+        $this->delete->execute(array(":id"=>$id));
+        if($this->delete->errorCode()!=0){
+            print_r($this->delete->errorInfo());
+        }
+        
     }
 }

@@ -1,7 +1,7 @@
 <?php
 function actionRdv($twig, $db){
     $client = new Client($db);
-    $consultation = new Consultation($db);
+    $consultation = new Prise_rdv($db);
   
     $clients = $client->select();
     if(isset($_POST['Valider'])){
