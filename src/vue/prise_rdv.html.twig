@@ -28,28 +28,27 @@
             </div>
             <table>
                 <tr>
+                    <td>Activité(s) pendant prestation</td>
+                    <td style="text-align: right;">Matériel nécessaire</td>
+                </tr>
+                <tr>
                     <td>            
                         <div class="form-group">
                             <div class="form-check">
-                                <label  for="activite">Activité pendant prestation</label><br />
                                  {% for act in activites %}
-                                     <label class="form-check-label"><input type="checkbox" class="form-check-input">
-                                     <option value="{{act.idAct}}">{{act.nomAct}}</option>
-                                     </label><br />
-                            {% endfor %}
-                                
+                                     <input type="checkbox" name="activite[]" value="{{act.idAct}}" /> {{act.nomAct}}
+                                     <br />
+                                 {% endfor %}
                             </div>
                         </div>
                     </td>
                     <td>
                         <div class="form-group">
                             <div class='form-check'>
-                                <label for='materiel'>Matériel nécessaire </label><br />
                                 {% for mat in materiels %}
-                                     <label class="form-check-label"><input type="checkbox" class="form-check-input">
-                                     <option value="{{mat.idMat}}">{{mat.nomMat}}</option>
-                                     </label><br />
-                            {% endfor %}
+                                     <input type="checkbox" name="materiel[]" value="{{mat.idMat}}" /> {{mat.nomMat}}
+                                     <br />
+                                {% endfor %}
                             </div>
                         </div>  
                     </td>

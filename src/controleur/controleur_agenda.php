@@ -7,7 +7,8 @@ function actionAgenda($twig, $db){
     }
     $date = date('o-m-j');
     $consultations = $agenda->selectByDate($date);
-    echo $twig->render('prestation_prevue.html.twig', array("consultations"=>$consultations));
+    
+    echo $twig->render('prestation_prevue.html.twig', array("consultations"=>$agenda));
 }
 function actionExportAgenda($twig, $db){
     $agenda = new Agenda($db);

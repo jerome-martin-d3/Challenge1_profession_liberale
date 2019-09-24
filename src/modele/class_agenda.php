@@ -15,7 +15,8 @@ Class Agenda{
                                                 INNER JOIN client cli on cli.idCli = cons.idClient
                                                 INNER JOIN prestation pres on pres.idPres = cons.idPres
                                                 INNER JOIN paiement paie on cons.idPay = paie.idPay
-                                                WHERE cons.datePres = :date");
+                                                WHERE cons.datePres = :date
+                                                ORDER BY heurePres");
         $this->delete = $db->prepare("DELETE FROM consultation WHERE idConsul = :id");        
     }
     
