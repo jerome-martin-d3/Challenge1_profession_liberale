@@ -5,3 +5,5 @@ require_once 'controleur_prise_rdv.php';
 require_once 'controleur_agenda.php';
 require_once 'controleur_activite.php';
 require_once 'controleur_prestation.php';
+require_once 'controleur_moyenpaie.php';
+
