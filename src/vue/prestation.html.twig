@@ -1,0 +1,37 @@
+{% extends "base.html.twig" %}
+{% block titre %} Gestion Prestation {% endblock %}
+{% block contenu %}
+    <div class='col-md-6'>
+        <h3>Gestion des Prestations</h3>
+        <h3>Ajout d'une nouvelle prestation </h3>
+        <form action="index.php?page=prestation" method="POST">
+            <div class="form-group">
+
+                <label for="libellePres">Intitulé de la prestation</label>
+                <input type="text" id="libellePres" name="libellePres" />
+
+            </div>
+
+            <input type="submit"name='ajoutPres' value="Ajouter"/>
+        </form>
+
+        <h3>Mes prestations</h3>
+        <table class="table">
+            <thead class="thead-dark">
+                <th>Intitulé </th>
+              
+                <th><i class='fas fa-trash'></i>
+            </thead>
+            <tbody>
+                {% for prestation in listePrestation %}
+                <tr>
+                    <td>{{prestation.libellePres}}</td>
+                
+                    <td><a href='index.php?page=prestation&idPresSup={{prestation.idPres}}'><i class='fas fa-trash'></i></a>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+{% endblock %}

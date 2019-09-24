@@ -7,6 +7,7 @@ function getPage($db){
  $lesPages['rdv']="actionRdv;0";
  $lesPages['consultation']="actionConsultation;0";
   $lesPages['activite']="actionActivite;0";
+  $lesPages['prestation']="actionPrestation;0";
  
  if ($db!=null){
     if(isset($_GET['page'])){

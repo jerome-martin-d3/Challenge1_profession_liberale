@@ -1,5 +1,5 @@
 <?php
 $config['serveur'] = 'localhost';
-$config['loginLocal'] = 'root';
-$config['mdpLocal'] = 'btsinfo';
-$config['bdLocal'] = 'profession_liberale';
+$config['loginLocal'] = 'prcronfalt';
+$config['mdpLocal'] = 'jcluango';
+$config['bdLocal'] = 'prcronfalt';
