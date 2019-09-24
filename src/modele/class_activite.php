@@ -4,14 +4,14 @@ Class Activite{
     private $select;
     private $insert;
     private $delete;
-    
+
     public function __construct($db){
         $this->db = $db;
         $this->select = $db->prepare("select * FROM activite");
         $this->insert = $db->prepare("insert into activite (nomAct, descAct) VALUES(:nomAct, :descAct) ");
-        $this->delete = $db->prepare("DELETE FROM activite WHERE idAct = :id");
+        $this->delete = $db->prepare("delete from activite WHERE idAct = :id");
     }
-    
+
     public function select(){
         $this->select->execute();
         if($this->select->errorCode()!=0){
@@ -32,4 +32,3 @@ Class Activite{
         }
     }
 }
-

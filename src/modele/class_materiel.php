@@ -4,14 +4,14 @@ Class Materiel{
     private $select;
     private $insert;
     private $delete;
-    
+
     public function __construct($db){
         $this->db = $db;
         $this->select = $db->prepare("select * FROM materiel");
         $this->insert = $db->prepare("insert into materiel (nomMat, comMat) VALUES(:nom, :desc) ");
-        $this->delete = $db->prepare("DELETE FROM materiel WHERE idMat = :id");
+        $this->delete = $db->prepare("delete from materiel WHERE idMat = :id");
     }
-    
+
     public function select(){
         $this->select->execute();
         if($this->select->errorCode()!=0){
@@ -25,8 +25,8 @@ Class Materiel{
             print_r($this->insert->errorinfo());
         }
     }
-    public function delete($idAct){
-        $this->delete->execute(array(":idAct"=>$idAct));
+    public function delete($id){
+        $this->delete->execute(array(":id"=>$id));
         if($this->delete->errorCode()!=0){
             print_r($this->delete->errorinfo());
         }

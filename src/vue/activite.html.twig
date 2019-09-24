@@ -14,13 +14,31 @@
 
             <div class="form-group">
 
-                <label for="comMat">Description ACt</label>
+                <label for="comMat">Description Activite</label>
                 <input class="form-control" id="comMat" name="descAct"/>
 
             </div>
-           
-            <input type="submit"name='ajoutMat' value="Ajouter"/>
+
+            <input type="submit"name='ajoutAct' value="Ajouter"/>
         </form>
- 
+
+        <h3>Mes activités</h3>
+        <table class="table">
+            <thead class="thead-dark">
+                <th>Nom </th>
+                <th>Description</th>
+                <th><i class='fas fa-trash'></i>
+            </thead>
+            <tbody>
+                {% for activite in listeActivite %}
+                <tr>
+                    <td>{{activite.nomAct}}</td>
+                    <td>{{activite.descAct}}</td>
+                    <td><a href='index.php?page=activite&idActSup={{activite.idAct}}'><i class='fas fa-trash'></i></a>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
     </div>
 {% endblock %}

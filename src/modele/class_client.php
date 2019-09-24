@@ -6,21 +6,21 @@ Class Client{
     private $delete;
     private $selectById;
     private $update;
-    
+
     public function __construct($db){
         $this->db = $db;
         $this->select = $db->prepare("select * from client");
         $this->insert = $db->prepare("insert into client (nomCli, prenomCli, dateNaissCli, adressCli, numCli) VALUES(:nomCli, :prenomCli, :dateNaissCli, :adressCli, :numCli) ");
         $this->delete = $db->prepare("DELETE FROM client WHERE idCli = :id");
         $this->selectById = $db->prepare("select * from client WHERE idCli = :id");
-        $this->update = $db->prepare("update client set nomCli = :nomCli, prenomCli = :prenomCli, dateNaissCli = :dateNaissCli, adressCli = :adressCli, numCli = :numCli WHERE idCli = :id");   
+        $this->update = $db->prepare("update client set nomCli = :nomCli, prenomCli = :prenomCli, dateNaissCli = :dateNaissCli, adressCli = :adressCli, numCli = :numCli WHERE idCli = :id");
     }
-    
+
     public function select(){
         $this->select->execute();
         if($this->select->errorCode()!=0){
             print_r($this->select->errorInfo());
-            
+
         }
         return $this->select->fetchAll();
     }
@@ -30,8 +30,8 @@ Class Client{
             print_r($this->insert->errorInfo());
         }
     }
-    public function delete($id){
-        $this->delete->execute(array(":id"=>$id));
+    public function delete($idCli){
+        $this->delete->execute(array(":id"=>$idCli));
         if($this->delete->errorCode()!=0){
             print_r($this->delete->errorInfo());
         }
