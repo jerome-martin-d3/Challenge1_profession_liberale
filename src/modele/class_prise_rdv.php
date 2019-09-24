@@ -8,7 +8,10 @@ Class Prise_rdv{
     
     public function __construct($db){
         $this->db = $db;
-        $this->select = $db->prepare("select * FROM consultation");
+        $this->select = $db->prepare("  select * FROM consultation cons
+                                        INNER JOIN client cli on cli.idCli = cons.idClient
+                                        INNER JOIN prestation pres on pres.idPres = cons.idPres
+                                        INNER JOIN paiement paie on cons.idPay = paie.idPay");
         $this->insert = $db->prepare("insert into consultation (datePres, heurePres,montantPay,idClient,idPres,idPay) VALUES(:datePres, :heurePres, :montantPay, :idClient, :idClient, :idPres, :idPay) ");
         $this->selectById = $db->prepare("select id,datePres, heurePres, montantPay,idClient,idPres,idPay from consultation where id=:id ");
         $this->delete = $db->prepare("DELETE FROM consultation WHERE id = :id");
