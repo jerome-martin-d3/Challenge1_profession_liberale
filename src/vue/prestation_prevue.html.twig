@@ -13,25 +13,26 @@
         </thead>
         
         <tbody>
-            {% for cons in consultations %}
-                {% for i in 8..18 %}
-                    {% if cons.heurePres[:2] == i %}
-                    <tr class='table-sucess'>
-                        <td><i class="far fa-check-circle"></i></td>
-                            <td>{{cons.heurePres}}</td>
-                            <td>{{cons.libellePres}}</td>
-                            <td style="text-align: right;"><a href="index.php?page=agenda&supCons={{cons.idConsul}}"><i class='fas fa-trash'></i></a> | <a href="index.php?page="><i class='fas fa-pen'></i></a></td>
-                    </tr>
-                    {% else %}
-                        <tr class='table-sucess'>
-                        <td><i class="far fa-check-circle"></i></td>
-                            <td>{{i}}:00</td>
-                            <td>...</td>
-                            <td style="text-align: right;"><a href="index.php?page=rdv" title="Prendre rendez-vous"><i class='fas fa-plus'></i></a></td>
-                        </tr>
-                    {% endif %}
+            {% for i in 8..18 %}
+                {% for cons in consultations %}
+                    
+                        {% if cons.heurePres[:2] == i %}
+                            <tr class='table-sucess'>
+                                <td><i class="far fa-check-circle"></i></td>
+                                    <td>{{cons.heurePres}}</td>
+                                    <td>{{cons.libellePres}}</td>
+                                    <td style="text-align: right;"><a href="index.php?page=agenda&supCons={{cons.idConsul}}"><i class='fas fa-trash'></i></a> | <a href="index.php?page="><i class='fas fa-pen'></i></a></td>
+                            </tr>
+                        {% else %}
+                            <tr class='table-sucess'>
+                            <td><i class="far fa-check-circle"></i></td>
+                                <td>{{i}}:00</td>
+                                <td>...</td>
+                                <td style="text-align: right;"><a href="index.php?page=rdv" title="Prendre rendez-vous"><i class='fas fa-plus'></i></a></td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
                 {% endfor %}
-            {% endfor %}
         </tbody>
         
     </table>
