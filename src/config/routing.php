@@ -6,8 +6,11 @@ function getPage($db){
  $lesPages['exportAgenda']="actionExportAgenda;0";
  $lesPages['rdv']="actionRdv;0";
  $lesPages['consultation']="actionConsultation;0";
- $lesPages['activite']="actionActivite;0";
+  $lesPages['activite']="actionActivite;0";
+  $lesPages['prestation']="actionPrestation;0";
+
  $lesPages['gestionMoyPaie'] = "actionMoyPaie;0";
+
  
  if ($db!=null){
     if(isset($_GET['page'])){
