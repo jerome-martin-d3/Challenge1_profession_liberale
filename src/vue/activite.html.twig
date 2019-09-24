@@ -1,0 +1,44 @@
+{% extends "base.html.twig" %}
+{% block titre %} Gestion Activité {% endblock %}
+{% block contenu %}
+    <div class='col-md-6'>
+        <h3>Gestion des Activités</h3>
+        <h3>Ajout d'un nouvel activités </h3>
+        <form action="index.php?page=activite" method="POST">
+            <div class="form-group">
+
+                <label for="nomAct">Intitulé de l'activité</label>
+                <input type="text" id="nomMat" name="nomAct" />
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="comMat">Description Activite</label>
+                <input class="form-control" id="comMat" name="descAct"/>
+
+            </div>
+
+            <input type="submit"name='ajoutAct' value="Ajouter"/>
+        </form>
+
+        <h3>Mes activités</h3>
+        <table class="table">
+            <thead class="thead-dark">
+                <th>Nom </th>
+                <th>Description</th>
+                <th><i class='fas fa-trash'></i>
+            </thead>
+            <tbody>
+                {% for activite in listeActivite %}
+                <tr>
+                    <td>{{activite.nomAct}}</td>
+                    <td>{{activite.descAct}}</td>
+                    <td><a href='index.php?page=activite&idActSup={{activite.idAct}}'><i class='fas fa-trash'></i></a>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+{% endblock %}
