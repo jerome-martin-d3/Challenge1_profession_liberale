@@ -1,0 +1,50 @@
+{% extends "base.html.twig" %}
+{% block titre %} Gestion moyens de paiement{% endblock %}
+
+{% block contenu %}
+   
+    <div class="col-md-4">
+        {% if get.editMoy is defined %}
+            <h3>Modifier un moyen de paiement</h3>
+            <form action="index.php?page=gestionMoyPaie" method="POST">
+                <div class="form-group">
+                    <label for="libelle">Libellé du moyen de paiement :</label><br />
+                    <input type="text" name="libelle" id="libelle" value="{{listeMoy.unMoy["libellePay"]}}"/>
+                    <input type="hidden" name="editMoy" value="{{listeMoy.unMoy["idPay"]}}" />
+                    <input type="submit" value="Modifier" />
+                </div>
+            </form>
+        {% else %}
+            <h3>Ajouter un moyen de paiement</h3>
+            <form action="index.php?page=gestionMoyPaie" method="POST">
+                <div class="form-group">
+                    <label for="libelle">Libellé du moyen de paiement :</label><br />
+                    <input type="text" name="libelle" id="libelle" />
+                    <input type="submit" name="addMoy" value="Ajouter" />
+                </div>
+            </form>
+        {% endif %}
+    </div>
+    <div class="col-md-2">
+        <table class="table">
+            <thread>
+                <th>#</th>
+                <th>Moyen de paiement</th>
+                <th style="text-align: right;"><i class="fas fa-pen"></i> | <i class="fas fa-trash"></i></th>
+            </thread>
+
+            <tbody>
+                {% for moy in listeMoy.lesMoyens %}
+                    <tr>
+                        <td>{{loop.index}}</td>
+                        <td>{{moy.libellePay}}</td>
+                        <td style="text-align: right;">
+                            <a href="index.php?page=gestionMoyPaie&editMoy={{moy.idPay}}"><i class="fas fa-pen"></i></a> | <a href="index.php?page=gestionMoyPaie&supMoy={{moy.idPay}}"><i class="fas fa-trash"></i></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+    
