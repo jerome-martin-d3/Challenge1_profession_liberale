@@ -2,10 +2,10 @@
 -- version 4.6.6deb4
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Sep 17, 2019 at 08:49 AM
--- Server version: 10.1.26-MariaDB-0+deb9u1
--- PHP Version: 7.0.19-1
+-- Client :  localhost:3306
+-- Généré le :  Mar 24 Septembre 2019 à 08:49
+-- Version du serveur :  10.1.38-MariaDB-0+deb9u1
+-- Version de PHP :  7.0.33-0+deb9u3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `profession_liberale`
+-- Base de données :  `prcronfalt`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `activite`
+-- Structure de la table `activite`
 --
 
 CREATE TABLE `activite` (
@@ -33,17 +33,22 @@ CREATE TABLE `activite` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `activite`
+-- Contenu de la table `activite`
 --
 
 INSERT INTO `activite` (`idAct`, `nomAct`, `descAct`) VALUES
 (1, '(yr(tyrt', 'ytryrty'),
-(2, 'rytr', 'yrtyryrysrytry');
+(2, 'rytr', 'yrtyryrysrytry'),
+(3, 'lol', 'lol'),
+(5, 're', 're'),
+(6, 'ret', 'ret'),
+(9, 'tr', 'tr'),
+(10, 'su', 'su');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `avoir`
+-- Structure de la table `avoir`
 --
 
 CREATE TABLE `avoir` (
@@ -54,7 +59,7 @@ CREATE TABLE `avoir` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `client`
+-- Structure de la table `client`
 --
 
 CREATE TABLE `client` (
@@ -63,22 +68,21 @@ CREATE TABLE `client` (
   `prenomCli` varchar(256) NOT NULL,
   `dateNaissCli` date NOT NULL,
   `adressCli` varchar(256) NOT NULL,
-  `numCli` varchar(256) NOT NULL,
-  `photo` varchar(255) DEFAULT NULL
+  `numCli` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `client`
+-- Contenu de la table `client`
 --
 
-INSERT INTO `client` (`idCli`, `nomCli`, `prenomCli`, `dateNaissCli`, `adressCli`, `numCli`, `photo`) VALUES
-(1, 'trhyrty', 'tytyyr', '2019-09-11', 'eryrtyrty', 'rydtryh', NULL),
-(2, 'rytryr', 'tryttrh', '2019-09-12', 'hyhserhy', 'hrshyyrth', NULL);
+INSERT INTO `client` (`idCli`, `nomCli`, `prenomCli`, `dateNaissCli`, `adressCli`, `numCli`) VALUES
+(3, 're', 're', '2019-09-05', 're', '01'),
+(4, 'ty', 'ty', '2019-08-28', 'ty', '12');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `comporter`
+-- Structure de la table `comporter`
 --
 
 CREATE TABLE `comporter` (
@@ -87,7 +91,7 @@ CREATE TABLE `comporter` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `comporter`
+-- Contenu de la table `comporter`
 --
 
 INSERT INTO `comporter` (`idPres`, `idAct`) VALUES
@@ -97,7 +101,7 @@ INSERT INTO `comporter` (`idPres`, `idAct`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `consultation`
+-- Structure de la table `consultation`
 --
 
 CREATE TABLE `consultation` (
@@ -110,18 +114,10 @@ CREATE TABLE `consultation` (
   `idPay` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `consultation`
---
-
-INSERT INTO `consultation` (`idConsul`, `datePres`, `heurePres`, `montantPay`, `idClient`, `idPres`, `idPay`) VALUES
-(1, '2019-09-10', 'yy(-y', 50, 1, 1, 1),
-(2, '2019-09-28', 'ykyiy', 12, 2, 2, 2);
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `materiel`
+-- Structure de la table `materiel`
 --
 
 CREATE TABLE `materiel` (
@@ -130,10 +126,18 @@ CREATE TABLE `materiel` (
   `comMat` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Contenu de la table `materiel`
+--
+
+INSERT INTO `materiel` (`idMat`, `nomMat`, `comMat`) VALUES
+(4, 'lol', 'lol'),
+(6, 'l', 'l');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `paiement`
+-- Structure de la table `paiement`
 --
 
 CREATE TABLE `paiement` (
@@ -142,7 +146,7 @@ CREATE TABLE `paiement` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `paiement`
+-- Contenu de la table `paiement`
 --
 
 INSERT INTO `paiement` (`idPay`, `libellePay`) VALUES
@@ -152,7 +156,7 @@ INSERT INTO `paiement` (`idPay`, `libellePay`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `prestation`
+-- Structure de la table `prestation`
 --
 
 CREATE TABLE `prestation` (
@@ -161,7 +165,7 @@ CREATE TABLE `prestation` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `prestation`
+-- Contenu de la table `prestation`
 --
 
 INSERT INTO `prestation` (`idPres`, `libellePres`) VALUES
@@ -169,37 +173,37 @@ INSERT INTO `prestation` (`idPres`, `libellePres`) VALUES
 (2, '(y-uyt');
 
 --
--- Indexes for dumped tables
+-- Index pour les tables exportées
 --
 
 --
--- Indexes for table `activite`
+-- Index pour la table `activite`
 --
 ALTER TABLE `activite`
   ADD PRIMARY KEY (`idAct`);
 
 --
--- Indexes for table `avoir`
+-- Index pour la table `avoir`
 --
 ALTER TABLE `avoir`
   ADD KEY `idAct` (`idAct`),
   ADD KEY `idMat` (`idMat`);
 
 --
--- Indexes for table `client`
+-- Index pour la table `client`
 --
 ALTER TABLE `client`
   ADD PRIMARY KEY (`idCli`);
 
 --
--- Indexes for table `comporter`
+-- Index pour la table `comporter`
 --
 ALTER TABLE `comporter`
   ADD KEY `idAct` (`idAct`),
   ADD KEY `comporter_ibfk_1` (`idPres`);
 
 --
--- Indexes for table `consultation`
+-- Index pour la table `consultation`
 --
 ALTER TABLE `consultation`
   ADD PRIMARY KEY (`idConsul`),
@@ -208,82 +212,82 @@ ALTER TABLE `consultation`
   ADD KEY `idClient` (`idClient`);
 
 --
--- Indexes for table `materiel`
+-- Index pour la table `materiel`
 --
 ALTER TABLE `materiel`
   ADD PRIMARY KEY (`idMat`);
 
 --
--- Indexes for table `paiement`
+-- Index pour la table `paiement`
 --
 ALTER TABLE `paiement`
   ADD PRIMARY KEY (`idPay`);
 
 --
--- Indexes for table `prestation`
+-- Index pour la table `prestation`
 --
 ALTER TABLE `prestation`
   ADD PRIMARY KEY (`idPres`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT pour les tables exportées
 --
 
 --
--- AUTO_INCREMENT for table `activite`
+-- AUTO_INCREMENT pour la table `activite`
 --
 ALTER TABLE `activite`
-  MODIFY `idAct` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idAct` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
--- AUTO_INCREMENT for table `client`
+-- AUTO_INCREMENT pour la table `client`
 --
 ALTER TABLE `client`
-  MODIFY `idCli` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idCli` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
--- AUTO_INCREMENT for table `consultation`
+-- AUTO_INCREMENT pour la table `consultation`
 --
 ALTER TABLE `consultation`
   MODIFY `idConsul` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT for table `materiel`
+-- AUTO_INCREMENT pour la table `materiel`
 --
 ALTER TABLE `materiel`
-  MODIFY `idMat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idMat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
--- AUTO_INCREMENT for table `paiement`
+-- AUTO_INCREMENT pour la table `paiement`
 --
 ALTER TABLE `paiement`
   MODIFY `idPay` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT for table `prestation`
+-- AUTO_INCREMENT pour la table `prestation`
 --
 ALTER TABLE `prestation`
   MODIFY `idPres` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- Constraints for dumped tables
+-- Contraintes pour les tables exportées
 --
 
 --
--- Constraints for table `avoir`
+-- Contraintes pour la table `avoir`
 --
 ALTER TABLE `avoir`
   ADD CONSTRAINT `avoir_ibfk_1` FOREIGN KEY (`idAct`) REFERENCES `activite` (`idAct`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `avoir_ibfk_2` FOREIGN KEY (`idMat`) REFERENCES `materiel` (`idMat`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `comporter`
+-- Contraintes pour la table `comporter`
 --
 ALTER TABLE `comporter`
   ADD CONSTRAINT `comporter_ibfk_1` FOREIGN KEY (`idPres`) REFERENCES `prestation` (`idPres`),
   ADD CONSTRAINT `comporter_ibfk_2` FOREIGN KEY (`idAct`) REFERENCES `activite` (`idAct`);
 
 --
--- Constraints for table `consultation`
+-- Contraintes pour la table `consultation`
 --
 ALTER TABLE `consultation`
-  ADD CONSTRAINT `consultation_ibfk_1` FOREIGN KEY (`idPres`) REFERENCES `prestation` (`idPres`),
-  ADD CONSTRAINT `consultation_ibfk_2` FOREIGN KEY (`idPay`) REFERENCES `paiement` (`idPay`),
-  ADD CONSTRAINT `consultation_ibfk_3` FOREIGN KEY (`idClient`) REFERENCES `client` (`idCli`);
+  ADD CONSTRAINT `consultation_ibfk_1` FOREIGN KEY (`idPres`) REFERENCES `prestation` (`idPres`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `consultation_ibfk_2` FOREIGN KEY (`idPay`) REFERENCES `paiement` (`idPay`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `consultation_ibfk_3` FOREIGN KEY (`idClient`) REFERENCES `client` (`idCli`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

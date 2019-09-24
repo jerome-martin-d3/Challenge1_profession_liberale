@@ -64,17 +64,25 @@
         <div class='col-md-4'>
             <div class="card">
                 <h3>Informations client</h3>
-                <form action="" method="POST">
+                {% if clients.unCli is defined %}
+                    <div class="card-body">Nom : {{clients.unCli["nomCli"] }}<br /> Prénom : {{clients.unCli["prenomCli"] }}<br /> Adresse :  {{clients.unCli["adressCli"] }}<br />Numéro de téléphone :    {{clients.unCli["numCli"] }} </div>
+                {% else %}
+                    <form action="index.php?page=rdv" method="POST">
                     <div class="form-group">
-                        <label for="choixClient">Selectionner un client ( si aucun client déjà selectionner )</label>
-                        <select name="choixClient" id="choixClient" class="form-control">
-                            <option value="John_Doe">John Doe</option>
-                            <option value="James">James</option>
+                        <label for="choixClient">Selectionnez un client </label>
+                        <input type="hidden" name="infos_cli" />
+                        <select name="choixClient" id="choixClient" class="form-control" onChange="this.form.submit()">
+                            <option value=''></option>
+                            {% for cli in clients %}
+                                <option value="{{cli.idCli}}">{{cli.nomCli}} {{cli.prenomCli}}</option>
+                            {% endfor %}
                         </select>
-                        <a href="index.html">Le client n'existe pas</a>
+                        <a href="index.php">Le client n'existe pas</a>
                     </div>
                 </form>
-                <div class="card-body">Nom : <br /> Prénom : <br /> Adresse :  <br />Numéro de téléphone :     </div>
+                {% endif %}
+                
+                
             </div>
         </div>
 {% endblock %}

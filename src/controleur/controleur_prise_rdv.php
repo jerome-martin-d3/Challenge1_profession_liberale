@@ -1,11 +1,18 @@
 <?php
-function actionConsultation($twig, $db){
-    $consultation = new Consultation($db);
-    
+function actionRdv($twig, $db){
+    $client = new Client($db);
+    $consultation = new Prise_rdv($db);
+  
+    $clients = $client->select();
     if(isset($_POST['Valider'])){
         $consultation->insert($_POST['datePres'], $_POST['heurePres'], $_POST['montantPay'], $_POST['idClient'], $_POST['idPres'], $_POST['idPay']);
     }
-    
-    $listeConsultation = $consultation->select();
-    echo $twig->render('consultation.html.twig', array("listeConsultation"=> $listeConsultation));
+  
+    if(isset($_POST['infos_cli'])){
+        $clients['unCli'] = $client->selectById($_POST['choixClient']);
+    }else if(isset($_GET['idCli'])){
+        $clients['unCli'] = $client->selectById($_GET['idCli']);
+    }
+  
+    echo $twig->render('prise_rdv.html.twig', array("clients"=>$clients));
 }
